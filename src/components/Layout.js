@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         <meta name='description' content='Bienvenido a mi blog' />
       </Head>
       <Header />
-      <main className='min-h-screen max-w-5xl mx-auto'>
+      <main className='max-w-5xl mx-auto'>
         {children}
       </main>
       <Footer />
