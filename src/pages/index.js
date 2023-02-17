@@ -1,12 +1,13 @@
-import Hero from '@/components/Hero'
-import Layout from '@/components/Layout'
-import Head from 'next/head'
+import Blog from '@/components/Layout/Blog'
+import Home from '@/components/Layout/Home'
+import Layout from '@/components/Layout/Layout'
 
-export default function Home() {
+export default function Index() {
   return (
     <>
       <Layout>
-        <Hero />
+        <Home />
+        <Blog />
       </Layout>
     </>
   )

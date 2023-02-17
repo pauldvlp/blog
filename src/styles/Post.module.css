@@ -1,0 +1,7 @@
+.container {
+  @apply grid gap-4 max-w-prose
+}
+
+.container > :not(pre) {
+  @apply px-4
+}

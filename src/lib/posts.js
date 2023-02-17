@@ -63,8 +63,8 @@ export function getSortedAndPaginatedAllPostsData(page, limit, tags) {
   const totalPages = Math.ceil(filteredPosts.length / limit);
   const hasNextPage = page < totalPages;
   const hasPrevPage = page > 1;
-  const nextPage = hasNextPage ? page + 1 : null;
-  const prevPage = hasPrevPage ? page - 1 : null;
+  const nextPage = hasNextPage ? Number(page) + 1 : null;
+  const prevPage = hasPrevPage ? Number(page) - 1 : null;
 
   return {
     docs: paginatedPosts,
