@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardTitle = () => {
+const CardTitle = ({ children }) => {
   return (
-    <div>CardTitle</div>
+    <h3 className='text-xl font-bold'>{children}</h3>
   )
 }
 

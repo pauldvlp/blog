@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardTagsContainer = () => {
+const CardTagsContainer = ({ children }) => {
   return (
-    <div>CardTagsContainer</div>
+    <div className='flex flex-wrap gap-2'>{children}</div>
   )
 }
 

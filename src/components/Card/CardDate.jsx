@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardDate = () => {
+const CardDate = ({children}) => {
   return (
-    <div>CardDate</div>
+    <span className='text-sm font-semibold place-self-end'>{children}</span>
   )
 }
 

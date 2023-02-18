@@ -1,39 +1,39 @@
 import { useEffect, useState } from "react";
 
-const initialData = {
-  docs: [],
-  total: 0,
-  limit: 10,
-  page: 1,
-  pages: 0,
-  nextPage: null,
-  hasNextPage: false,
-  prevPage: null,
-  hasPrevPage: false,
-};
+const DEFAULT_QUERY = { page: 1, limit: 10, tags: [] };
 
 const usePosts = () => {
-  const [data, setData] = useState(initialData);
-  const [query, setQuery] = useState({ page: 1, limit: 1, tags: [] });
+  const [data, setData] = useState({
+    docs: [],
+    total: 0,
+    pages: 0,
+    nextPage: null,
+    hasNextPage: false,
+    prevPage: null,
+    hasPrevPage: false,
+  });
+
+  const [query, setQuery] = useState(DEFAULT_QUERY);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     try {
-      const endpoint = `/api/posts?page=${query.page}&limit=${
-        query.limit
-      }&tags=${query.tags.join(",")}`;
+      setLoading(true);
+      const endpoint = `/api/posts?page=${query.page}&limit=${query.limit}&tags=${query.tags.join(",")}`;
       const options = { headers: { "Content-Type": "application/json" } };
 
-      const { data, status } = await fetch(endpoint, options).then((res) =>
-        res.json()
-      );
+      const response = await fetch(endpoint, options);
 
-      if (status === "FAILED") {
-        throw new Error(data.error);
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
       }
 
-      setData(data);
+      const { data: fetchedData } = await response.json();
+      setData(fetchedData);
     } catch (error) {
-      alert(error?.message || error.toString());
+      alert(error.message || "Failed to fetch data");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,7 +41,7 @@ const usePosts = () => {
     fetchData();
   }, [query]);
 
-  return { data, query, setQuery };
+  return { data, query, loading, setQuery };
 };
 
 export default usePosts;

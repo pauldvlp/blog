@@ -11,7 +11,7 @@ const HomeLinks = () => {
         Lee Mi Blog
       </Link>
       <Link
-        href={"/#contact"}
+        href={"#contact"}
         className="text-blue-600 bg-white px-6 h-12 rounded-full grid place-items-center shadow-xl shadow-blue-100 active:shadow-none active:scale-90 duration-300 text-sm font-semibold border-2 border-blue-600"
       >
         Contáctame

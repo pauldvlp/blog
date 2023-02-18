@@ -30,7 +30,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href={'/#contact'} className='text-sm text-slate-600 hover:text-slate-800 hover:border-b font-bold'>
+            <Link href={'#contact'} className='text-sm text-slate-600 hover:text-slate-800 hover:border-b font-bold'>
               Contacto
             </Link>
           </li>

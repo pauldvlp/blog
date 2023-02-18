@@ -1,32 +1,35 @@
 import usePosts from "@/hooks/usePosts";
-import React, { useEffect, useState } from "react";
+import React, { createContext } from "react";
 
-const BlogContext = React.createContext()
+const BlogContext = createContext();
 
 const BlogProvider = ({ children }) => {
-  const { data, query, setQuery } = usePosts()
+  const { data, loading, query, setQuery } = usePosts();
 
-  const handlePage = ({ type }) => {
-    const page = type === "desc" ? --query.page : ++query.page;
-    setQuery((prevQuery) => ({ ...prevQuery, page }));
+  const handlePage = (type) => {
+    setQuery((prevQuery) => {
+      const page = type === "desc" ? prevQuery.page - 1 : prevQuery.page + 1;
+      return { ...prevQuery, page };
+    });
   };
 
   const handleTags = ({ tag }) => {
-    const alreadyAddedTag = query.tags.indexOf(tag) > -1;
-
-    const tags = alreadyAddedTag
-      ? query.filter((t) => t !== tag)
-      : [...query.tags, tag];
-
-    setQuery((prevQuery) => ({ ...prevQuery, tags }));
+    setQuery((prevQuery) => {
+      const tags = prevQuery.tags.includes(tag)
+        ? prevQuery.tags.filter((t) => t !== tag)
+        : [...prevQuery.tags, tag];
+      return { ...prevQuery, tags };
+    });
   };
 
-  return (
-    <BlogContext.Provider value={{ ...data, handlePage, handleTags }}>
-      {children}
-    </BlogContext.Provider>
-  )
+  const resetTags = () => {
+    setQuery((prevQuery) => ({ ...prevQuery, tags: [] }));
+  };
+
+  const blogData = { ...data, query, loading, handlePage, handleTags, resetTags };
+
+  return <BlogContext.Provider value={blogData}>{children}</BlogContext.Provider>;
 };
 
-export default BlogContext
 export { BlogProvider };
+export default BlogContext;
