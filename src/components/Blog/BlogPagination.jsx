@@ -13,7 +13,7 @@ const BlogPagination = () => {
         <Button onClick={() => handlePage({ type: 'desc' })} disabled={loading}>Anterior</Button>
       )
     }
-    {page} de {pages}
+    {pages ? page : pages} de {pages}
     {
       hasNextPage && (
         <Button onClick={() => handlePage({ type: 'asc' })} disabled={loading}>Siguiente</Button>

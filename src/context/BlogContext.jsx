@@ -6,7 +6,7 @@ const BlogContext = createContext();
 const BlogProvider = ({ children }) => {
   const { data, loading, query, setQuery } = usePosts();
 
-  const handlePage = (type) => {
+  const handlePage = ({ type }) => {
     setQuery((prevQuery) => {
       const page = type === "desc" ? prevQuery.page - 1 : prevQuery.page + 1;
       return { ...prevQuery, page };

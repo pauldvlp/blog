@@ -6,7 +6,7 @@ export default function HighLight({ html }) {
 
   useEffect(() => {
     hljs.highlightAll()
-  }, [])
+  }, [html])
   
   return <main className={styles.container} dangerouslySetInnerHTML={{ __html: html }}></main>
 }

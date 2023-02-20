@@ -38,7 +38,8 @@ export function getPostData(slug) {
   const md = fs.readFileSync(path.join(postsPathname, `${slug}.md`))
   const { data, content } = matter(md)
   const html = new Showdown.Converter({ tables: true }).makeHtml(content)
-  return { meta: data, html }
+  const meta = { ...data, slug }
+  return { meta, html }
 }
 
 export function getSortedAndPaginatedAllPostsData(page, limit, tags) {

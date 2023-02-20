@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-const DEFAULT_QUERY = { page: 1, limit: 10, tags: [] };
-
-const usePosts = () => {
+const usePosts = ({ page = 1, limit = 10, tags = [] } = {}) => {
   const [data, setData] = useState({
     docs: [],
     total: 0,
@@ -13,7 +11,7 @@ const usePosts = () => {
     hasPrevPage: false,
   });
 
-  const [query, setQuery] = useState(DEFAULT_QUERY);
+  const [query, setQuery] = useState({ page, limit, tags });
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
