@@ -3,7 +3,7 @@
 }
 
 .container h1 {
-  @apply text-3xl sm:text-5xl font-bold tracking-tight mb-8
+  @apply text-2xl sm:text-4xl font-bold tracking-tight mb-8 text-center border-b pb-12
 }
 
 .container h2 {
@@ -12,6 +12,26 @@
 
 .container h3 {
   @apply text-lg sm:text-xl font-bold mt-4
+}
+
+.container ul {
+  @apply list-disc pl-4
+}
+
+.container ol {
+  @apply list-decimal pl-4
+}
+
+.container table {
+  @apply border border-collapse my-4
+}
+
+.container table td, .container table th {
+  @apply border p-2
+}
+
+.container table thead {
+  @apply bg-slate-100
 }
 
 .container p {
@@ -31,7 +51,7 @@
 }
 
 .container pre {
-  @apply overflow-x-auto
+  @apply overflow-x-auto my-4
 }
 
 .container p code {
@@ -40,4 +60,8 @@
 
 .container pre code {
   @apply my-4 leading-loose
+}
+
+.container img {
+  @apply w-full h-auto leading-none
 }

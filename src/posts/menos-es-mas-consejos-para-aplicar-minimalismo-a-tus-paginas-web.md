@@ -1,6 +1,6 @@
 ---
 title: Menos es más. Consejos para aplicar minimalismo a tus páginas web.
-date: 15-02-2023
+date: 15 Feb 2023
 tags:
 - design
 - css

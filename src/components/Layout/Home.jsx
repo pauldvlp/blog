@@ -1,8 +1,8 @@
 import React from 'react'
-import HomeHeading from '../Hero/HomeHeading'
-import HomeLinks from '../Hero/HomeLinks'
-import HomeName from '../Hero/HomeName'
-import HomeResume from '../Hero/HomeResume'
+import HomeHeading from '../Home/HomeHeading'
+import HomeLinks from '../Home/HomeLinks'
+import HomeName from '../Home/HomeName'
+import HomeResume from '../Home/HomeResume'
 
 export default function Hero() {
   return (

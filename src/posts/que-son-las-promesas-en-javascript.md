@@ -1,6 +1,6 @@
 ---
 title: ¿Qué son las promesas en JavaScript?
-date: 14-02-2023
+date: 14 Feb 2023
 tags:
 - javascript
 - web

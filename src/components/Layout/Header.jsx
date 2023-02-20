@@ -1,20 +1,8 @@
+import useScroll from '@/hooks/useScroll'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 
 export default function Header() {
-  const [isInTop, setIsInTop] = useState(true)
-
-  useEffect(
-    () => {
-      const handleScroll = () => setIsInTop(window.scrollY < 20)
-      window.addEventListener('scroll', handleScroll)
-      
-      return () => {
-        window.removeEventListener('scroll', handleScroll)
-      }
-    },
-    []
-  )
+  const isInTop = useScroll()
 
   return (
     <header className={`sticky top-0 backdrop-blur-lg bg-white/70 border-b duration-300 ${isInTop ? 'border-b-transparent' : 'border-b-slate-200'}`}>

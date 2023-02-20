@@ -1,6 +1,6 @@
 ---
 title: ¿Cómo hacer tu primer página web?
-date: 16-02-2023
+date: 16 Feb 2023
 tags:
 - javascript
 - css
@@ -9,8 +9,6 @@ resume: ¿Te preguntas cómo crear tu primera página web? No te preocupes, en e
 ---
 
 # ¿Cómo hacer tu primer página web?
-
-> Amo enseñarte, espero te guste la lectura.
 
 Crear tu primera página web puede parecer intimidante al principio, especialmente si nunca has trabajado con código antes. Sin embargo, con una comprensión básica de HTML, CSS y JavaScript, podrás crear una página web simple en poco tiempo.
 

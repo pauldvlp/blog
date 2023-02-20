@@ -3,15 +3,15 @@ import React from "react";
 const getTagClassname = ({ tag, active = false }) => {
   const normalClassNames = {
     css: "bg-blue-100 text-blue-700",
-    javascript: "bg-yellow-100 text-yellow-600",
-    html: "bg-orange-100 text-orange-600",
-    react: "bg-cyan-100 text-cyan-500",
+    javascript: "bg-yellow-100 text-yellow-800",
+    html: "bg-orange-100 text-orange-700",
+    react: "bg-cyan-100 text-cyan-600",
     design: "bg-indigo-100 text-indigo-700",
     web: "bg-slate-200 text-slate-700",
     node: "bg-lime-100 text-lime-700",
     git: "bg-amber-100 text-amber-700",
-    figma: "bg-fuchsia-100 text-fuchsia-500",
-    seo: "bg-rose-100 text-rose-600",
+    figma: "bg-fuchsia-100 text-fuchsia-600",
+    seo: "bg-rose-100 text-rose-700",
   };
 
   const activeClassNames = {

@@ -1,6 +1,6 @@
 ---
 title: ¿Servidor web en Node.js sin Express?
-date: 13-02-2023
+date: 13 Feb 2023
 tags:
 - javascript
 - node
