@@ -10,10 +10,10 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main className='max-w-5xl mx-auto'>
+      <section className='max-w-5xl mx-auto'>
         {children}
         <Contact />
-      </main>
+      </section>
       <Footer />
       <ScrollTop />
     </>

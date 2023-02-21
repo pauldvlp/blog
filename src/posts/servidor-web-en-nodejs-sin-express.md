@@ -9,3 +9,7 @@ resume: Si alguna vez te has preguntado cómo funcionan los servidores web en No
 ---
 
 # ¿Servidor web en Node.js sin Express?
+
+|Artículo en construcción 👷🏻‍♂️⚒️|
+|:---------------------------:|
+|[Ir al blog](/#blog)|

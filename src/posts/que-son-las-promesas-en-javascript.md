@@ -8,3 +8,7 @@ resume: Las promesas son uno de los conceptos más importantes en JavaScript, y 
 ---
 
 # ¿Qué son las promesas en JavaScript?
+
+|Artículo en construcción 👷🏻‍♂️⚒️|
+|:---------------------------:|
+|[Ir al blog](/#blog)|

@@ -31,7 +31,7 @@ const usePosts = ({ page = 1, limit = 10, tags = [] } = {}) => {
     } catch (error) {
       alert(error.message || "Failed to fetch data");
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   };
 

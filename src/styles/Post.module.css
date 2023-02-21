@@ -59,9 +59,25 @@
 }
 
 .container pre code {
-  @apply my-4 leading-loose
+  @apply my-4 leading-loose relative
 }
 
 .container img {
   @apply w-full h-auto leading-none
+}
+
+.container pre code[class~="hljs"]::before {
+  @apply absolute top-2 right-2 bg-white text-black text-xs px-2 py-1
+}
+
+.container pre code[class~="language-html"]::before {
+  content: 'html';
+}
+
+.container pre code[class~="language-js"]::before {
+  content: 'javascript';
+}
+
+.container pre code[class~="language-css"]::before {
+  content: 'css';
 }

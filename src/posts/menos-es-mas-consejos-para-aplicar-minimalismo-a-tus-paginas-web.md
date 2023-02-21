@@ -9,3 +9,7 @@ resume: Un diseño minimalista no solo hace que tu página web se vea elegante, 
 ---
 
 # Menos es más, consejos para aplicar minimalismo a tus páginas web.
+
+|Artículo en construcción 👷🏻‍♂️⚒️|
+|:---------------------------:|
+|[Ir al blog](/#blog)|

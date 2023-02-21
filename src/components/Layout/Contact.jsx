@@ -2,6 +2,7 @@ import React from "react";
 import ContactForm from "@/components/Contact/ContactForm";
 import Heading from "../Elements/Heading";
 import { ContactProvider } from "@/context/ContactContext";
+import ContactLinks from "../Contact/ContactLinks";
 
 const Contact = () => {
   return (
@@ -12,6 +13,7 @@ const Contact = () => {
       >
         <Heading>Contáctame.</Heading>
         <ContactForm />
+        <ContactLinks />
       </section>
     </ContactProvider>
   );

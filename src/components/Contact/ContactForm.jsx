@@ -43,7 +43,7 @@ const ContactForm = () => {
       <ContactEmail />
       <ContactSubject />
       <ContactMessage />
-      <Button type="submit" className='justify-self-end'>
+      <Button type="submit" className='justify-self-end' disabled={loading}>
         {loading ? 'Enviando...' : 'Enviar'}
       </Button>
       {

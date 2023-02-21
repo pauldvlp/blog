@@ -43,7 +43,7 @@ const BlogFilter = () => {
           onClick={resetTags}
           className="text-center w-full text-sm font-semibold text-blue-600 underline cursor-pointer mt-2"
         >
-          Resetear Filtros
+          Quitar Filtros
         </span>
       );
     }
