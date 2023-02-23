@@ -2,8 +2,8 @@
 title: ¿Cómo hacer tu primer página web?
 date: 16 Feb 2023
 tags:
-- javascript
 - css
+- javascript
 - html
 keywords:
 - página

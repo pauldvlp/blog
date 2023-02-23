@@ -3,8 +3,8 @@ import React, { createContext } from "react";
 
 const BlogContext = createContext();
 
-const BlogProvider = ({ children }) => {
-  const { data, loading, query, setQuery } = usePosts();
+const BlogProvider = ({ data: defaultData, children }) => {
+  const { data, loading, query, setQuery } = usePosts({ defaultData });
 
   const handlePage = ({ type }) => {
     setQuery((prevQuery) => {
@@ -18,7 +18,7 @@ const BlogProvider = ({ children }) => {
       const tags = prevQuery.tags.includes(tag)
         ? prevQuery.tags.filter((t) => t !== tag)
         : [...prevQuery.tags, tag];
-      return { ...prevQuery, tags };
+      return { ...prevQuery, page: 1, tags };
     });
   };
 

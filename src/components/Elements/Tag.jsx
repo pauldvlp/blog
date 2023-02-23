@@ -1,33 +1,10 @@
 import React from "react";
+import tags from '@/lib/tags.json'
 
 const getTagClassname = ({ tag, active = false }) => {
-  const normalClassNames = {
-    css: "bg-blue-100 text-blue-700",
-    javascript: "bg-yellow-100 text-yellow-800",
-    html: "bg-orange-100 text-orange-700",
-    react: "bg-cyan-100 text-cyan-600",
-    design: "bg-indigo-100 text-indigo-700",
-    web: "bg-slate-200 text-slate-700",
-    node: "bg-lime-100 text-lime-700",
-    git: "bg-amber-100 text-amber-700",
-    figma: "bg-fuchsia-100 text-fuchsia-600",
-    seo: "bg-rose-100 text-rose-700",
-  };
+  const { normal: normalClass, active: activeClass } = tags[tag]
 
-  const activeClassNames = {
-    css: "bg-blue-500 text-white",
-    javascript: "bg-yellow-500 text-black",
-    html: "bg-orange-500 text-white",
-    react: "bg-cyan-500 text-white",
-    design: "bg-indigo-500 text-white",
-    web: "bg-slate-500 text-white",
-    node: "bg-lime-500 text-black",
-    git: "bg-amber-500 text-black",
-    figma: "bg-fuchsia-500 text-white",
-    seo: "bg-rose-500 text-white",
-  };
-
-  return active ? activeClassNames[tag] : normalClassNames[tag];
+  return active ? activeClass : normalClass;
 };
 
 const Tag = ({ tag, active, ...props }) => {

@@ -1,11 +1,11 @@
 import BlogContext from "@/context/BlogContext";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../Card/Card";
 import Loader from "../Elements/Loader";
 
 const BlogCards = () => {
   const { docs, query, loading } = useContext(BlogContext);
-
+  
   const renderCards = () => {
     if (docs.length === 0) {
       return (

@@ -16,7 +16,7 @@ export default function handler(req, res) {
       return
     }
 
-    const posts = getSortedAndPaginatedAllPostsData(page, limit, tags)
+    const posts = getSortedAndPaginatedAllPostsData({ page, limit, tags })
     res.status(200).json({ status: 'OK', data: posts })
   } catch (error) {
     res.status(500).json({ status: 'FAILED', data: { error: error?.message || error.toString() } })

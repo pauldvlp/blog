@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 * {
-  scroll-behavior: smooth;
+  @apply scroll-mt-16 sm:scroll-mt-24
 }

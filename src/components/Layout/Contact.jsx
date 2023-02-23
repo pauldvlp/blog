@@ -9,7 +9,7 @@ const Contact = () => {
     <ContactProvider>
       <section
         id="contact"
-        className="max-w-xl p-4 mx-auto scroll-mt-16 sm:scroll-mt-24 grid gap-12 mb-12"
+        className="max-w-xl p-4 mx-auto grid gap-12 mb-12"
       >
         <Heading>Contáctame.</Heading>
         <ContactForm />

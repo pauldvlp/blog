@@ -1,13 +1,14 @@
 import React from 'react'
 import path from 'path'
-import { getAllPostsSlug, getPostData } from '@/lib/posts'
+import { getAllPostsSlug, getPostData, getSortedAndPaginatedAllPostsData } from '@/lib/posts'
 import HighLight from '@/components/Elements/Highligth'
 import Head from 'next/head'
 import Layout from '@/components/Layout/Layout'
 import LastPosts from '@/components/Post/LastPosts'
+import { getFormattedDate } from '@/lib/date'
 
-const Post = ({ html, meta }) => {
-  const { slug, url, image, title = '', resume = '', tags = [], keywords = [] } = meta
+const Post = ({ html, meta, latestPosts }) => {
+  const { url, image, title = '', resume = '', tags = [], keywords = [] } = meta
   return (
     <Layout>
       <Head>
@@ -32,8 +33,9 @@ const Post = ({ html, meta }) => {
 
         <link rel="canonical" href={url} />
       </Head>
+      <p className='text-center mt-24 text-xs mb-4'>{getFormattedDate(meta.date)}</p>
       <HighLight html={html} />
-      <LastPosts current={slug} />
+      <LastPosts posts={latestPosts} />
     </Layout>
   )
 }
@@ -45,6 +47,11 @@ export async function getStaticProps({ params }) {
 
   props.meta.url = path.join(process.cwd(), 'blog', slug)
   props.meta.image = path.join(process.cwd(), `/images/posts/${slug}.png`)
+  const posts = getSortedAndPaginatedAllPostsData({ limit: 3 })
+
+  props.latestPosts = posts.docs.filter(
+    post => post.slug !== slug
+  ).slice(0,2)
 
   return {
     props

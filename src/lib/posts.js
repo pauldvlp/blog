@@ -26,7 +26,7 @@ export function getSortedAllPostsData() {
       return { ...data, slug: post.replace('.md', '') }
     }
   )
-  
+
   const sortedPostsData = allPostsData.sort(
     (a, b) => new Intl.Collator().compare(b.date, a.date)
   )
@@ -37,12 +37,13 @@ export function getSortedAllPostsData() {
 export function getPostData(slug) {
   const md = fs.readFileSync(path.join(postsPathname, `${slug}.md`))
   const { data, content } = matter(md)
-  const html = new Showdown.Converter({ tables: true }).makeHtml(content)
+  const options = { tables: true, openLinksInNewWindow: true }
+  const html = new Showdown.Converter(options).makeHtml(content)
   const meta = { ...data, slug }
   return { meta, html }
 }
 
-export function getSortedAndPaginatedAllPostsData(page, limit, tags) {
+export function getSortedAndPaginatedAllPostsData({ page = 1, limit = 10, tags = null }) {
   const posts = getSortedAllPostsData()
 
   const filteredPosts = posts.filter(

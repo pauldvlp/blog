@@ -1,19 +1,7 @@
 import BlogContext from "@/context/BlogContext";
 import React, { useContext } from "react";
 import Tag from "../Elements/Tag";
-
-const tags = [
-  "css",
-  "javascript",
-  "html",
-  "react",
-  "design",
-  "web",
-  "node",
-  "git",
-  "figma",
-  "seo",
-];
+import tags from '@/lib/tags.json'
 
 const TagFilter = ({ tag, handleTags, query }) => {
   const active = query.tags.includes(tag);
@@ -28,10 +16,11 @@ const TagFilter = ({ tag, handleTags, query }) => {
 };
 
 const BlogFilter = () => {
+  const tagsKeys = Object.keys(tags)
   const { resetTags, handleTags, query } = useContext(BlogContext);
 
   const renderTags = () => {
-    return tags.map((tag) => (
+    return tagsKeys.map((tag) => (
       <TagFilter key={tag} tag={tag} handleTags={handleTags} query={query} />
     ));
   };
