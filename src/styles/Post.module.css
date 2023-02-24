@@ -1,91 +1,72 @@
 .container {
-  @apply grid gap-6 max-w-3xl mx-auto mb-36
+  @apply grid gap-8 max-w-3xl mb-36 mx-auto p-4;
 }
 
-.container h1 {
-  @apply text-2xl sm:text-4xl font-bold tracking-tight mb-8 text-center border-b pb-12
-}
-
-.container h2 {
-  @apply text-xl sm:text-3xl font-bold mt-4
-}
-
-.container h3 {
-  @apply text-lg sm:text-xl font-bold mt-4
-}
-
-.container ul {
-  @apply list-none pl-4
-}
-
-.container li {
-  @apply leading-loose
-}
-
-.container ol {
-  @apply list-decimal pl-4
-}
-
-.container table {
-  @apply border border-collapse
-}
-
-.container table td, .container table th {
-  @apply border p-2
-}
-
-.container table thead {
-  @apply bg-slate-100
-}
-
-.container p {
-  @apply leading-loose
-}
-
-.container blockquote {
-  @apply border-l-2 border-l-blue-300 bg-blue-50 p-4
+.container :is(p, li) {
+  @apply font-light leading-loose;
 }
 
 .container a {
-  @apply text-blue-600 hover:underline hover:text-blue-600
+  @apply hover:underline hover:text-blue-600 text-blue-600 hover:bg-sky-50/50;
 }
 
-.container a code {
-  @apply underline
+.container blockquote {
+  @apply bg-blue-50 p-4;
 }
 
-.container > :not(pre) {
-  @apply mx-4
+.container h1 {
+  @apply border-b font-bold mb-8 pb-12 sm:text-4xl text-2xl text-center tracking-tight;
 }
 
-.container pre {
-  @apply  overflow-x-auto shadow-2xl mb-4
+.container h2 {
+  @apply font-medium mt-8 sm:text-3xl text-xl;
 }
 
-.container :not(pre) code {
-  @apply bg-slate-100 p-[2px] rounded text-sm
-}
-
-.container pre code {
-  @apply leading-loose relative text-sm
+.container h3 {
+  @apply font-medium mt-6 sm:text-2xl text-lg;
 }
 
 .container img {
-  @apply w-full h-auto leading-none
+  @apply h-auto leading-none w-full;
 }
 
-.container pre code[class~="hljs"]::before {
-  @apply absolute top-2 right-2 bg-white text-black text-xs px-2 py-1
+.container li {
+  @apply my-4;
 }
 
-.container pre code[class~="language-html"]::before {
-  content: 'html';
+.container ol {
+  @apply list-decimal pl-4;
 }
 
-.container pre code[class~="language-js"]::before {
-  content: 'javascript';
+.container pre {
+  @apply mb-4 overflow-x-auto shadow-2xl;
 }
 
-.container pre code[class~="language-css"]::before {
-  content: 'css';
+.container pre code {
+  @apply leading-loose relative text-sm;
+}
+
+.container strong {
+  @apply font-semibold;
+}
+
+.container table {
+  @apply border border-collapse;
+}
+
+.container table td,
+.container table th {
+  @apply border p-2;
+}
+
+.container table thead {
+  @apply bg-slate-100;
+}
+
+.container ul {
+  @apply list-none pl-4;
+}
+
+.container :not(pre) code {
+  @apply bg-sky-50 border border-sky-200 px-1 py-[2px];
 }

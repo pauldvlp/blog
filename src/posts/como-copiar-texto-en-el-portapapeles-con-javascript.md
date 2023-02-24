@@ -13,87 +13,103 @@ resume: Copiar texto en el portapapeles con JavaScript puede parecer complicado,
 
 # ¿Cómo copiar texto en el portapapeles con JavaScript?
 
-Anteriormente ya habia escrito un articulo llamado <a href="/blog/aprende-a-manejar-el-portapapeles-con-javascript">Aprende a manejar el portapapeles con JavaScript</a>, donde trataba de explicarte como utilizar la API de `Clipboard`. En este articulo hablaremos especificamente solo sobre copiar el texto en el portapapeles y haremos una funcion reutilizable para utilizarla en cualquier sitio web, de igual manera te explicaré lo básico que debes entender de esta API, pero no dudes en visitar el artículo completo para mejorar tu conocimiento.
+¿Has visto esas páginas como *Bootstrap, Tailwind CSS, Github*, donde dando clic puedes copiar el código sin necesidad de seleccionarlo todo, dar clic derecho y darle en copiar, o usar `Ctrl + C`?
+
+Cada vez es más popular la funcionalidad de copiar el texto de un código, un enlace, etcétera, en las páginas web y redes sociales, en este artículo veremos cómo podemos copiar el texto de tu página web con una función reutilizable para usarla en cualquier otro código.
 
 ## Clipboard API
 
-Para acceder a ella solo debemos utilizar el objeto `clipboard` de [`window.navigator`](https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator). Esta API nos proporciona cuatro metodos asíncronos, en este caso solo utilizaremos uno: `writeText()`, el cual copia en el portapapeles el texto que pasaremos por parametro, y nos devolvera un promesa vacía, pero que podemos utilizar para hacer comprobacion de errores.
+La API de `Clipboard` nos proporciona métodos que nos permiten copiar y pegar tanto texto como otros tipos de datos como imágenes y audios. esta API es *asíncrona*, por lo que sus métodos nos devuelven una promesa la cual se resolverá o se rechazara dependiendo de si se pudo o no realizar la acción que ejecutemos.
 
-Muy bien, ahora como te decia al inicio, crearemos una funcion reutilizable, la cual llamaremos `copyTextToClipboard`, que recibira los parametros `data` y `callback`
+Podemos acceder a esta API por medio de `window.navigator.clipboard`.
 
-### Comprobacion de Tipos
+En este articulo nos centraremos solo en uno de los métodos, el que nos sirve para copiar solo texto, pero de igual manera te daré una breve explicación de cada método.
 
-Es importante verificar los tipos de datos siempre para que nos evitemos errores no deseados en nuestro codigo.
+- `write`: recibe como parámetro un arreglo de [`ClipboardItem`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem)'s que se escribirán (copiar) en el portapapeles.
+
+- `writeText`: recibe como parámetro una cadena de texto, que se escribirá (copiar) en el portapapeles. Este es el que utilizaremos para este tutorial.
+
+- `read`: devuelve una promesa que se resuelve con un arreglo de [`ClipboardItem`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem)'s.
+
+- `readText`: devuelve una promesa que se resuelve con una cadena de texto; esta cadena puede estar vacía si el último elemento que se copió no es un texto, o el portapapeles este vacío.
+
+Los errores son algo que siempre pasa en todo código que escribamos, esta API puede arrojarnos algunos que te comentare en seguida:
+
+- `NotAllowedError`: se lanza cuando la página no tiene permiso para acceder al portapapeles.
+
+- `NotFoundError`: se lanza cuando el portapapeles no está disponible.
+
+- `ClipboardEventCancelled`: se lanza cuando el usuario cancela la operación del portapapeles.
+
+## La función `copyTextToClipboard`
+
+Ahora ya podemos empezar a crear nuestra función reutilizable, y te cuento de que va:
+
+> Sera una función a la que le pasaremos como primer parámetro el texto que deseamos copiar y como segundo parámetro que será opcional, una función callback que podrá ejecutar después de que se resuelva o se rechace, esta función recibirá dos parámetros, el primero será el error que devuelva la promesa en caso de que se rechace y si todo ha ido bien será null, y el segundo parámetro será el texto que estamos tratando de copiar.
+
+También realizaremos
+
+- Comprobacion de tipos, para un mejor manejo de los errores
+- Una versión síncrona utilizando `then/catch`
+- Una versión asíncrona utilizando `async/await`
+
+### 1. Comprobación de Tipos
 
 ```js
 function copyTextToClipboard(data, callback) {
-  // Comprobamos que el tipo de dato del argumento
-  // 'data' sea 'string' y de no ser asi lanzamos
-  // un error de tipo.
-  if (typeof data !== "string") {
-    throw new TypeError(
-      "The 'data' argument of 'copyTextToClipboard' is of a different type than 'string'"
-    );
+  if (data === undefined) {
+    throw new ReferenceError("The 'data' argument is not present or is undefined")
   }
 
-  // Ahora comprobamos primero que el argumento
-  // 'callback' existe y de ser asi seguimos
-  // comprobando que sea del tipo 'function'.
-  if (callback && typeof callback !== "function") {
-    throw new TypeError(
-      "The 'callback' argument of 'copyTextToClipboard' is of a different type than 'function'"
-    );
+  if (typeof data !== 'string') {
+    throw new TypeError("The 'data' argument must be of type 'string'")
+  }
+
+  if (callback && typeof callback !== 'function') {
+    throw new TypeError("The 'callback' argument must be of type 'function'")
   }
 }
 ```
 
-Bien, ahora que ya comprobamos que los tipos son correctos, seguiremos copiando el texto, te mostrare como hacerlo de dos maneras: con `then/catch` y con `async/await`.
+Esta función solo es para copiar texto por lo que comprobaremos que `data` exista, y de no ser asi lanzaremos un error con `throw` y `ReferenceError`.
 
-### Con Then/Catch
+Ahora que ya sabemos que `data` si existe comprobamos que sea un tipo de dato *string*, de lo contrario lanzaremos otro error pero en este caso seria con `TypeError`.
+
+Como mencionaba antes la función `callback` será opcional por lo que primero comprobamos que exista y de ser así comprobamos que sea del tipo *function*, de lo contrario hacemos lo mismo que con `data`, con su respectivo mensaje.
+
+### 2. Then/Catch
 
 ```js
 function copyTextToClipboard(data, callback) {
-  /* Comprobacion de tipos... */
+  /* Comprobacion de Tipos */
 
-  // Desestructuramos el objeto 'clipboard'
-  // de 'window.navigator'
-  const { clipboard } = window.navigator;
+  const { clipboard } = window.navigator
 
   clipboard
     .writeText(data)
     .then(() => {
-      // Comprobamos que existe 'callback'
-      // Y de ser asi ejecutamos la funcion
-      // y pasamos 'null' como primer
-      // argumento ya que no hubo error.
-      if (callback) callback(null, data);
+      if (callback) callback(null, data)
     })
     .catch((error) => {
-      // Al igual que en 'then' pero en
-      // este caso pasamos el error que 
-      // nos lanza la funcion 'writeText'
-      if (callback) callback(error, data);
-    });
+      if (callback) callback(error, data)
+    })
 }
 ```
 
-### Con Async/Await
+Aquí solo nos queda ejecutar el método `writeText` y esperar a que se resuelva o se rechace, en ambos casos comprobaremos que `callback` exista y de ser así la ejecutamos.
+
+En caso de que se resuelva le pasamos `null` en el primer parámetro, y en caso contrario le pasamos el error que nos devuelve `catch`.
+
+### 3. Async/Await
 
 ```js
-// Recuerda agregar la palabra clave 'async'
 async function copyTextToClipboard(data, callback) {
-  /* Comprobacion de tipos... */
+  /* Comprobacion de Tipos */
 
-  // Utilizaremos el bloque try/catch para
-  // poder controlar el error y que nuestra
-  // app no se rompa.
+  const { clipboard } = window.navigator
+
   try {
-    const { clipboard } = window.navigator
-
-    // Esperamos que se cumpla o se rechace
-    // la promesa.
     await clipboard.writeText(data)
-
     if (callback) callback(null, data)
   } catch(error) {
     if (callback) callback(error, data)
@@ -101,7 +117,77 @@ async function copyTextToClipboard(data, callback) {
 }
 ```
 
+Aquí convertimos en asíncrona la función anteponiendo la palabra `async` antes de `function copyTextToClipboard`.
+
+Ahora utilizaremos el bloque `try/catch` para poder manejar el error en caso de que haya alguno.
+
+Con `await` esperamos a que el texto se copie y poder seguir con el resto de la función.
+
+Al igual que con la versión síncrona, comprobamos que exista `callback` y ejecutamos la función con sus respectivos parámetros.
+
+## Ejemplo: veamos un uso de la vida real
+
+Imaginemos uno de los casos que mencionaba anteriormente, donde hay un código como el cdn de una librería el cual podemos copiar dando clic en un botón para pegarlo en nuestra página o proyecto, haremos uno parecido donde al presionar el botón y copiar el texto el texto del botón cambie a “Copiado” y luego de un segundo vuelva a ser el texto “Copiar”, y en caso de que ocurra un error el botón no cambiara y en su lugar lanzara una alerta indicando el error.
+
+```html
+<div class="container">
+  <pre class="copy-text">&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</pre>
+  <button class="copy-button">Copiar</button>
+</div>
+```
+
+```css
+.container {
+  position: relative;
+}
+
+.copy-text {
+  margin: 0;
+  padding: 1rem;
+  background-color: gainsboro;
+  border: 1px solid gray;
+  overflow-x: auto;
+}
+
+.copy-button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 4px 8px;
+}
+```
+
+```js
+async function copyTextToClipboard(data, callback) {
+  /* Code... */
+}
+
+const $copyText = document.querySelector('.copy-text')
+const $copyButton = document.querySelector('.copy-button')
+
+const handleClick = () => {
+  const data = $copyText.textContent
+  const callback = (error) => {
+    if (error) {
+      alert(error.toString())
+      return
+    }
+
+    $copyButton.textContent = 'Copiado'
+    setTimeout(() => {
+      $copyButton.textContent = 'Copiar'
+    }, 1000)
+  }
+
+  copyTextToClipboard(data, callback)
+}
+
+$copyButton.addEventListener('click', handleClick)
+```
+**¡Felicitaciones! 🥳**, ya puedes copiar el texto de cualquier página web programándolo, se siente bien ¿No?, en un futuro escribiré un artículo explicando más a fondo la API de Clipboard para que puedas ampliar tus conocimientos, talvez cuando vuelvas ya lo haya hecho y salga el enlace aquí.
+
 ### Compatibilidad con Navegadores
+
 - **Can I Use**
     - [Asynchronous Clipboard API](https://caniuse.com/async-clipboard)
 - **MDN**
