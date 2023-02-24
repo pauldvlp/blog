@@ -1,6 +1,6 @@
 ---
 title: ¿Cómo copiar texto en el portapapeles con JavaScript?
-date: 22 Feb 2023
+date: 24 Feb 2023
 tags:
   - javascript
   - web
