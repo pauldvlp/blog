@@ -8,7 +8,7 @@ const variantsClassNames = {
 const Button = ({ children, className, variant = 'primary', ...props }) => {
   return (
     <button
-      className={`h-12 text-sm font-semibold px-6 rounded-full ${variantsClassNames[variant]} ${className} shadow-lg shadow-blue-300 active:shadow-none active:scale-90 duration-300 focus:outline-blue-400`}
+      className={`h-12 text-sm font-semibold px-6 rounded-full whitespace-nowrap ${variantsClassNames[variant]} ${className} shadow-lg shadow-blue-300 active:shadow-none active:scale-90 duration-300 focus:outline-blue-400`}
       {...props}
     >
       {children}

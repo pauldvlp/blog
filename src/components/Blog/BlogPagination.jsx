@@ -17,7 +17,7 @@ const BlogPagination = () => {
   }
 
   return (
-    <footer className="flex justify-center gap-4 items-center">
+    <footer className="flex justify-center gap-4 items-center flex-wrap">
     {
       hasPrevPage && (
         <Button onClick={handleClick('desc')} disabled={loading}>{'<-'} Anterior</Button>
