@@ -30,7 +30,7 @@ const ContactLinks = () => {
       <div className='flex justify-center gap-4 flex-wrap'>
         {links.map(({ name, url }) => {
           return (
-            <a key={name} className='font-semibold text-blue-500 hover:text-blue-700 border-b border-b-transparent hover:border-blue-700' href={url.toString()} target={"_blank"}>
+            <a key={name} className='font-semibold text-blue-500 hover:text-blue-700 border-b border-b-transparent hover:border-blue-700' href={url.toString()} target={"_blank"} rel='noreferrer noopener'>
               {name}
             </a>
           );
