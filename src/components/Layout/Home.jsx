@@ -10,8 +10,7 @@ export default function Hero() {
     <>
       <Head>
         <title>
-          Paul Barahona | Desarrollo web Frontend y Backend con Figma y
-          JavaScript
+          Paul Barahona | Desarrollo y Diseño Web y UI [I 💛 JavaScript]
         </title>
         <meta
           name="description"
