@@ -44,8 +44,8 @@ export async function getStaticProps({ params }) {
 
   const props = getPostData(slug)
 
-  props.meta.url = `/blog/${slug}`
-  props.meta.image = `/images/posts/${slug}.png`
+  props.meta.url = `${process.env.HOST}/blog/${slug}`
+  props.meta.image = `${process.env.HOST}/images/posts/${slug}.png`
   const posts = getSortedAndPaginatedAllPostsData({ limit: 3 })
 
   props.latestPosts = posts.docs.filter(
