@@ -1,5 +1,4 @@
 import React from 'react'
-import path from 'path'
 import { getAllPostsSlug, getPostData, getSortedAndPaginatedAllPostsData } from '@/lib/posts'
 import HighLight from '@/components/Elements/Highligth'
 import Head from 'next/head'
@@ -45,8 +44,8 @@ export async function getStaticProps({ params }) {
 
   const props = getPostData(slug)
 
-  props.meta.url = path.join(process.cwd(), 'blog', slug)
-  props.meta.image = path.join(process.cwd(), `/images/posts/${slug}.png`)
+  props.meta.url = `/blog/${slug}`
+  props.meta.image = `/images/posts/${slug}.png`
   const posts = getSortedAndPaginatedAllPostsData({ limit: 3 })
 
   props.latestPosts = posts.docs.filter(
