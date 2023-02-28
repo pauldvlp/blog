@@ -6,7 +6,7 @@ import HomeName from "../Home/HomeName";
 import HomeResume from "../Home/HomeResume";
 
 const title = 'Paul Barahona | Desarrollo y Diseño Web y UI [I 💛 JavaScript]'
-const description = 'Bienvenidos a mi blog, donde encontrarás contenido sobre desarrollo web Frontend y Backend utilizando herramientas como Figma y lenguajes de programación como JavaScript. Descubre consejos, trucos y tutoriales para mejorar tus habilidades como desarrollador y crear sitios web impresionantes. ¡Únete a la comunidad de Paul Barahona y lleva tus habilidades de desarrollo web al siguiente nivel!'
+const description = '¿Quieres aprender sobre desarrollo y diseño web?, Bienvenido a mi blog donde puedes encontrar recursos y tips de Programación y Diseño, tanto en el Frontend como en el Backend. Mi proposito es enseñar y aprender, espero que crezcamos juntos.'
 
 export default function Home({ imageURL }) {
   return (
