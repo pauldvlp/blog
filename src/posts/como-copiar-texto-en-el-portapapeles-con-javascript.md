@@ -13,7 +13,7 @@ resume: Copiar texto en el portapapeles con JavaScript puede parecer complicado,
 
 # ¿Cómo copiar texto en el portapapeles con JavaScript?
 
-¿Has visto esas páginas como *Bootstrap, Tailwind CSS, Github*, donde dando clic puedes copiar el código sin necesidad de seleccionarlo todo, dar clic derecho y darle en copiar, o usar `Ctrl + C`?
+¿Has visto esas páginas como *Bootstrap, Tailwind CSS, Github*, donde dando clic puedes copiar el código sin necesidad de seleccionarlo todo, dar clic derecho y darle en copiar, o usar **`Ctrl + C`**?
 
 Cada vez es más popular la funcionalidad de copiar el texto de un código, un enlace, etcétera, en las páginas web y redes sociales, en este artículo veremos cómo podemos copiar el texto de tu página web con una función reutilizable para usarla en cualquier otro código.
 
@@ -136,6 +136,8 @@ Imaginemos uno de los casos que mencionaba anteriormente, donde hay un código c
 </div>
 ```
 
+En nuestro html crearemos un contenedor para la etiqueta `pre` que contendrá como texto un etiqueta **script** con la url de la CDN de [TailwindCSS](https://tailwindcss.com) lista solo para pegarlo en nuestra página. También tenemos un botón que será el que presionaremos para copiar el texto. 
+
 ```css
 .container {
   position: relative;
@@ -157,23 +159,36 @@ Imaginemos uno de los casos que mencionaba anteriormente, donde hay un código c
 }
 ```
 
+Ahora en el CSS tendremos algunos estilos básicos para que nuestro ejemplo se vea más parecido a lo que hacen este tipo de páginas, al `div` con la clase `container` le pondremos un posicionamiento `relative` para que nuestro botón se pueda posicionar con `absolute` en la parte superior a la derecha del recuadro. 
+
 ```js
 async function copyTextToClipboard(data, callback) {
   /* Code... */
 }
 
+// Recuperamos nuestros elementos del DOM.
 const $copyText = document.querySelector('.copy-text')
 const $copyButton = document.querySelector('.copy-button')
 
+// Crearemos la funcion manejadora del
+// evento click del botón.
 const handleClick = () => {
+  // Recuperaremos el texto que copiaremos.
   const data = $copyText.textContent
+
   const callback = (error) => {
+    // En caso de error lanzaremos una alerta
+    // y terminamos la ejecucion.
     if (error) {
       alert(error.toString())
       return
     }
 
+    // Cambiaremos el texto del boton.
     $copyButton.textContent = 'Copiado'
+
+    // Luego de un segundo volveremos
+    // a la normalidad el boton.
     setTimeout(() => {
       $copyButton.textContent = 'Copiar'
     }, 1000)
@@ -182,9 +197,19 @@ const handleClick = () => {
   copyTextToClipboard(data, callback)
 }
 
+// Asignamos la funcion que creamos al
+// evento click.
 $copyButton.addEventListener('click', handleClick)
 ```
+
+Ahora en nuestro JS programaremos esta función `handleClick` para que maneje el evento `click` de nuestro botón. 
+
 **¡Felicitaciones! 🥳**, ya puedes copiar el texto de cualquier página web programándolo, se siente bien ¿No?, en un futuro escribiré un artículo explicando más a fondo la API de Clipboard para que puedas ampliar tus conocimientos, talvez cuando vuelvas ya lo haya hecho y salga el enlace aquí.
+
+### Articulos relacionados
+
+- <a href='/blog/manejo-de-errores-en-javascript-try-cath-finally'>Manejo de errores en JavaScript. Try - Catch, y... ¿Finally?</a>
+- <a href='/blog/que-son-las-promesas-en-javascript'>¿Qué son las promesas en JavaScript?</a>
 
 ### Compatibilidad con Navegadores
 

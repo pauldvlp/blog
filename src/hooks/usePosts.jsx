@@ -1,15 +1,22 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-const usePosts = ({ defaultData = {}, page = 1, limit = 6, tags = [] } = {}) => {
+const usePosts = ({
+  defaultData = {},
+  page = 1,
+  limit = 6,
+  tags = [],
+} = {}) => {
   const [data, setData] = useState(defaultData);
 
   const [query, setQuery] = useState({ page, limit, tags });
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
-      const endpoint = `/api/posts?page=${query.page}&limit=${query.limit}&tags=${query.tags.join(",")}`;
+      const endpoint = `/api/posts?page=${query.page}&limit=${
+        query.limit
+      }&tags=${query.tags.join(",")}`;
       const options = { headers: { "Content-Type": "application/json" } };
 
       const response = await fetch(endpoint, options);
@@ -23,13 +30,13 @@ const usePosts = ({ defaultData = {}, page = 1, limit = 6, tags = [] } = {}) => 
     } catch (error) {
       alert(error.message || "Failed to fetch data");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  };
+  }, [query]);
 
   useEffect(() => {
     fetchData();
-  }, [query]);
+  }, [query, fetchData]);
 
   return { data, query, loading, setQuery };
 };

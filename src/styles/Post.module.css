@@ -31,7 +31,7 @@
 }
 
 .container li {
-  @apply my-4;
+  @apply my-2;
 }
 
 .container ol {
@@ -64,7 +64,7 @@
 }
 
 .container ul {
-  @apply list-none pl-4;
+  @apply pl-4 list-none;
 }
 
 .container :not(pre) code {
