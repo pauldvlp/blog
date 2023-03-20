@@ -13,7 +13,7 @@ function generateSiteMap(posts) {
        .map(({ slug, date }) => {
          return `
        <url>
-           <loc>${path.join(ROOT, 'blog', slug)}</loc>
+           <loc>${ROOT}/blog/${slug}}</loc>
            <lastmod>${new Date(date).toISOString()}</lastmod>
        </url>
      `;
