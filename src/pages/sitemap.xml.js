@@ -1,7 +1,7 @@
 import path from 'path'
 import { getSortedAllPostsData } from "@/lib/posts";
 
-const ROOT = process.HOST || 'localhost:3000'
+const ROOT = process.env.HOST || 'localhost:3000'
 
 function generateSiteMap(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
