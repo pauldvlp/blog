@@ -3,21 +3,19 @@ import React from "react";
 const links = [
   {
     name: "Whatsapp",
-    url: new URL(
-      "https://wa.me/50488969200?Text=Hola, te escribo desde tu blog"
-    ),
+    url: '/wa'
   },
   {
     name: "Instagram",
-    url: new URL("https://instagram.com/pauldvlp"),
+    url: '/ig'
   },
   {
     name: "Twitter",
-    url: new URL("https://twitter.com/@pauldvlp"),
+    url: '/tt'
   },
   {
     name: "Github",
-    url: new URL("https://github.com/pauldvlp"),
+    url: '/gh'
   },
 ];
 
