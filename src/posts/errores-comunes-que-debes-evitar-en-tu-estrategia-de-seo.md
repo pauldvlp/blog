@@ -12,4 +12,4 @@ resume: Una estrategia de SEO efectiva puede hacer la diferencia en la cantidad 
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

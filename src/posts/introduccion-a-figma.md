@@ -15,4 +15,4 @@ resume: Figma es una herramienta de diseño gráfico y prototipado en línea que
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

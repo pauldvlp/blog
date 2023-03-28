@@ -11,4 +11,4 @@ resume: Las promesas son uno de los conceptos más importantes en JavaScript, y 
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

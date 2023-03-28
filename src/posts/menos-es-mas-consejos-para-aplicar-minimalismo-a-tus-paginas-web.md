@@ -12,4 +12,4 @@ resume: Un diseño minimalista no solo hace que tu página web se vea elegante, 
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

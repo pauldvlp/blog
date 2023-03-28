@@ -16,4 +16,4 @@ resume: El módulo fs de Node.js es una biblioteca poderosa que te permite traba
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

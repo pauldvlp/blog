@@ -18,4 +18,4 @@ resume: La estructura try-catch-finally es una herramienta poderosa para el mane
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

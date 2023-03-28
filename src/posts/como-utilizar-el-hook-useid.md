@@ -15,4 +15,4 @@ resume: Git es una herramienta esencial para cualquier desarrollador de software
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

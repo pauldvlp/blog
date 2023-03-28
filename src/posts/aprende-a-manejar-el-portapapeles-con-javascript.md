@@ -15,4 +15,4 @@ resume: El manejo del portapapeles es una tarea importante en muchas aplicacione
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

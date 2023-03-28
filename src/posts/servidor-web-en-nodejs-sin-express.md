@@ -12,4 +12,4 @@ resume: Si alguna vez te has preguntado cómo funcionan los servidores web en No
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|

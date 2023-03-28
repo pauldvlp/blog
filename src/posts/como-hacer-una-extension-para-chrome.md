@@ -16,4 +16,4 @@ resume: ¿Quieres crear una extensión de Chrome personalizada pero no sabes por
 
 |Artículo en construcción 👷🏻‍♂️⚒️|
 |:---------------------------:|
-|[Ir al blog](/#blog)|
+|<a href='/#blog'>Ir al Blog</a>|
