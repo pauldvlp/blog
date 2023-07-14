@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const useScroll = () => {
   const [isInTop, setIsInTop] = useState(true)
@@ -7,7 +7,7 @@ const useScroll = () => {
     () => {
       const handleScroll = () => setIsInTop(window.scrollY < 20)
       window.addEventListener('scroll', handleScroll)
-      
+
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }

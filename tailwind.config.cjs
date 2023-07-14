@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,json}"
+    './src/**/*.{js,ts,jsx,tsx,json}'
   ],
   theme: {
     extend: {
@@ -11,7 +11,7 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono]
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: []
 }

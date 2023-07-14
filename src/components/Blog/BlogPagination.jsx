@@ -1,13 +1,13 @@
-import BlogContext from "@/context/BlogContext";
-import React, { useContext } from "react";
-import Button from "../Elements/Button";
+import BlogContext from '@/context/BlogContext'
+import React, { useContext } from 'react'
+import Button from '../Elements/Button'
 import { useRouter } from 'next/router'
 
 const BlogPagination = () => {
   const router = useRouter()
 
   const { pages, page, hasNextPage, hasPrevPage, loading, handlePage } =
-    useContext(BlogContext);
+    useContext(BlogContext)
 
   const handleClick = (type) => {
     return () => {
@@ -17,20 +17,20 @@ const BlogPagination = () => {
   }
 
   return (
-    <footer className="flex justify-center gap-4 items-center flex-wrap">
-    {
+    <footer className='flex justify-center gap-4 items-center flex-wrap'>
+      {
       hasPrevPage && (
         <Button onClick={handleClick('desc')} disabled={loading}>{'<-'} Anterior</Button>
       )
     }
-    {pages ? page : pages} de {pages}
-    {
+      {pages ? page : pages} de {pages}
+      {
       hasNextPage && (
         <Button onClick={handleClick('asc')} disabled={loading}>Siguiente {'->'}</Button>
       )
     }
     </footer>
-  );
-};
+  )
+}
 
-export default BlogPagination;
+export default BlogPagination

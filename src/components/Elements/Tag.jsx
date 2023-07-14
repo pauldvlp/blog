@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 import tags from '@/lib/tags.json'
 
 const getTagClassname = ({ tag, active = false }) => {
   const { normal: normalClass, active: activeClass } = tags[tag]
 
-  return active ? activeClass : normalClass;
-};
+  return active ? activeClass : normalClass
+}
 
 const Tag = ({ tag, active, ...props }) => {
   return (
@@ -17,7 +17,7 @@ const Tag = ({ tag, active, ...props }) => {
     >
       {tag}
     </span>
-  );
-};
+  )
+}
 
-export default Tag;
+export default Tag

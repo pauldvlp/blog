@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react"
+import { useEffect } from 'react'
 import hljs from 'highlight.js'
 import styles from '@/styles/Post.module.css'
+import { MDXRemote } from 'next-mdx-remote'
+import Link from 'next/link'
 
-export default function HighLight({ html }) {
+const components = { Link }
 
+export default function HighLight ({ mdxSource }) {
   useEffect(() => {
     hljs.highlightAll()
-  }, [html])
-  
-  return <main className={styles.container} dangerouslySetInnerHTML={{ __html: html }}></main>
+  }, [mdxSource])
+
+  return (
+    <main className={styles.container}>
+      <MDXRemote {...mdxSource} components={components} />
+    </main>
+  )
 }

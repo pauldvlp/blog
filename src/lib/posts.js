@@ -1,29 +1,29 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import Showdown from 'showdown'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const postsPathname = path.join(process.cwd(), 'src/posts')
 
 const getTags = string => string.toLowerCase().split(',')
 
-export function getAllPosts() {
+export function getAllPosts () {
   return fs.readdirSync(postsPathname)
 }
 
-export function getAllPostsSlug() {
+export function getAllPostsSlug () {
   const posts = getAllPosts()
-  return posts.map(post => post.replace('.md', ''))
+  return posts.map(post => post.replace('.mdx', ''))
 }
 
-export function getSortedAllPostsData() {
+export function getSortedAllPostsData () {
   const posts = getAllPosts()
 
   const allPostsData = posts.map(
     (post) => {
       const md = fs.readFileSync(path.join(postsPathname, post))
       const { data } = matter(md)
-      return { ...data, slug: post.replace('.md', '') }
+      return { ...data, slug: post.replace('.mdx', '') }
     }
   )
 
@@ -34,16 +34,15 @@ export function getSortedAllPostsData() {
   return sortedPostsData
 }
 
-export function getPostData(slug) {
-  const md = fs.readFileSync(path.join(postsPathname, `${slug}.md`))
+export async function getPostData (slug) {
+  const md = fs.readFileSync(path.join(postsPathname, `${slug}.mdx`))
   const { data, content } = matter(md)
-  const options = { tables: true, openLinksInNewWindow: true, simpleLineBreaks: true }
-  const html = new Showdown.Converter(options).makeHtml(content)
+  const mdxSource = await serialize(content)
   const meta = { ...data, slug }
-  return { meta, html }
+  return { meta, mdxSource }
 }
 
-export function getSortedAndPaginatedAllPostsData({ page = 1, limit = 10, tags = null }) {
+export function getSortedAndPaginatedAllPostsData ({ page = 1, limit = 10, tags = null }) {
   const posts = getSortedAllPostsData()
 
   const filteredPosts = posts.filter(
@@ -62,11 +61,11 @@ export function getSortedAndPaginatedAllPostsData({ page = 1, limit = 10, tags =
   const endIndex = page * limit
   const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
 
-  const totalPages = Math.ceil(filteredPosts.length / limit);
-  const hasNextPage = page < totalPages;
-  const hasPrevPage = page > 1;
-  const nextPage = hasNextPage ? Number(page) + 1 : null;
-  const prevPage = hasPrevPage ? Number(page) - 1 : null;
+  const totalPages = Math.ceil(filteredPosts.length / limit)
+  const hasNextPage = page < totalPages
+  const hasPrevPage = page > 1
+  const nextPage = hasNextPage ? Number(page) + 1 : null
+  const prevPage = hasPrevPage ? Number(page) - 1 : null
 
   return {
     docs: paginatedPosts,
@@ -77,6 +76,6 @@ export function getSortedAndPaginatedAllPostsData({ page = 1, limit = 10, tags =
     nextPage,
     hasNextPage,
     prevPage,
-    hasPrevPage,
-  };
+    hasPrevPage
+  }
 }

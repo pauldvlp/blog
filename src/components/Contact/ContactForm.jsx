@@ -1,13 +1,13 @@
-import ContactContext from "@/context/ContactContext";
-import useFormSubmit from "@/hooks/useFormSubmit";
-import React, { useContext, useState } from "react";
-import Button from "../Elements/Button";
-import ContactEmail from "./ContactEmail";
-import ContactError from "./ContactError";
-import ContactMessage from "./ContactMessage";
-import ContactName from "./ContactName";
-import ContactSubject from "./ContactSubject";
-import ContactSuccess from "./ContactSuccess";
+import ContactContext from '@/context/ContactContext'
+import useFormSubmit from '@/hooks/useFormSubmit'
+import React, { useContext, useState } from 'react'
+import Button from '../Elements/Button'
+import ContactEmail from './ContactEmail'
+import ContactError from './ContactError'
+import ContactMessage from './ContactMessage'
+import ContactName from './ContactName'
+import ContactSubject from './ContactSubject'
+import ContactSuccess from './ContactSuccess'
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false)
@@ -17,7 +17,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     try {
-      e.preventDefault();
+      e.preventDefault()
       setLoading(true)
       setError(null)
 
@@ -35,15 +35,19 @@ const ContactForm = () => {
     } finally {
       setLoading(false)
     }
-  };
+  }
 
   return (
-    <form className="grid gap-4" onSubmit={handleSubmit}>
+    <>
+    <span className='text-center'>
+    Ó puedes enviarme un correo
+  </span>
+    <form className='grid gap-4' onSubmit={handleSubmit}>
       <ContactName />
       <ContactEmail />
       <ContactSubject />
       <ContactMessage />
-      <Button type="submit" className='justify-self-end' disabled={loading}>
+      <Button type='submit' className='justify-self-end' disabled={loading}>
         {loading ? 'Enviando...' : 'Enviar'}
       </Button>
       {
@@ -53,7 +57,8 @@ const ContactForm = () => {
       }
       {success && <ContactSuccess />}
     </form>
-  );
-};
+    </>
+  )
+}
 
-export default ContactForm;
+export default ContactForm

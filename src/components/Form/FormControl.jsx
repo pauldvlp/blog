@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const FormControl = ({ children }) => {
-  return <label className="grid gap-2">{children}</label>;
-};
+  return <label className='grid gap-2'>{children}</label>
+}
 
-export default FormControl;
+export default FormControl

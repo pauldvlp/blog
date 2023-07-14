@@ -56,7 +56,7 @@
 
 .container table td,
 .container table th {
-  @apply border p-2;
+  @apply border p-2 text-center;
 }
 
 .container table thead {

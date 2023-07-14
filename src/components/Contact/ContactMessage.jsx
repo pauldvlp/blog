@@ -6,7 +6,7 @@ import Textarea from '@/components/Elements/Textarea'
 import ContactContext from '@/context/ContactContext'
 
 const ContactMessage = () => {
-  const { data, errors, handleData } = useContext(ContactContext);
+  const { data, errors, handleData } = useContext(ContactContext)
 
   return (
     <FormControl>

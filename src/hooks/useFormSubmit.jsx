@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const endpoint = 'https://formsubmit.co/ajax/hola@paulbarahona.com'
 const headers = { 'Content-Type': 'application/json' }
@@ -10,7 +10,7 @@ const useFormSubmit = (data) => {
   const handleFormSubmit = async () => {
     try {
       const { subject, ...restOfData } = data
-  
+
       restOfData._subject = subject || `Hola, soy ${restOfData.name}`
 
       const options = { method, headers, body: JSON.stringify(restOfData) }

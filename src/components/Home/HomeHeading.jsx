@@ -1,5 +1,5 @@
-import React from "react";
-import Heading from "../Elements/Heading";
+import React from 'react'
+import Heading from '../Elements/Heading'
 
 const HomeHeading = () => {
   return (
@@ -7,7 +7,7 @@ const HomeHeading = () => {
       El aprendizaje y la enseñanza son los mejores regalos que puedes dar y
       recibir.
     </Heading>
-  );
-};
+  )
+}
 
-export default HomeHeading;
+export default HomeHeading

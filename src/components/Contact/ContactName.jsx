@@ -6,7 +6,7 @@ import Input from '@/components/Elements/Input'
 import ContactContext from '@/context/ContactContext'
 
 const ContactName = () => {
-  const { data, errors, handleData } = useContext(ContactContext);
+  const { data, errors, handleData } = useContext(ContactContext)
 
   return (
     <FormControl>

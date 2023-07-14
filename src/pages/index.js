@@ -4,7 +4,7 @@ import Layout from '@/components/Layout/Layout'
 import { BlogProvider } from '@/context/BlogContext'
 import { getSortedAndPaginatedAllPostsData } from '@/lib/posts'
 
-export default function Index({ data, imageURL }) {
+export default function Index ({ data, imageURL }) {
   return (
     <>
       <Layout>
@@ -17,7 +17,7 @@ export default function Index({ data, imageURL }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const data = getSortedAndPaginatedAllPostsData({ limit: 6 })
 
   const imageURL = process.env.HOST + '/images/og.png'

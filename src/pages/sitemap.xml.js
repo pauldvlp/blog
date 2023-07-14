@@ -1,9 +1,8 @@
-import path from 'path'
-import { getSortedAllPostsData } from "@/lib/posts";
+import { getSortedAllPostsData } from '@/lib/posts'
 
 const ROOT = process.env.HOST || 'localhost:3000'
 
-function generateSiteMap(posts) {
+function generateSiteMap (posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
      <url>
@@ -16,29 +15,29 @@ function generateSiteMap(posts) {
            <loc>${ROOT}/blog/${slug}</loc>
            <lastmod>${new Date(date).toISOString()}</lastmod>
        </url>
-     `;
+     `
        })
        .join('')}
    </urlset>
- `;
+ `
 }
 
-function SiteMap() {
+function SiteMap () {
   // getServerSideProps will do the heavy lifting
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps ({ res }) {
   const posts = getSortedAllPostsData()
 
-  const sitemap = generateSiteMap(posts);
+  const sitemap = generateSiteMap(posts)
 
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
+  res.setHeader('Content-Type', 'text/xml')
+  res.write(sitemap)
+  res.end()
 
   return {
-    props: {},
-  };
+    props: {}
+  }
 }
 
-export default SiteMap;
+export default SiteMap
