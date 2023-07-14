@@ -10,6 +10,7 @@ export default function Document () {
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github-dark.min.css' />
         <meta name='author' content='Paul Barahona' />
         <meta name='robots' content='index, follow' />
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
       </Head>
       <body className='overflow-x-hidden'>
         <Main />
