@@ -2,7 +2,7 @@ import React from 'react'
 
 const links = [
   {
-    name: 'Whatsapp',
+    name: 'WhatsApp',
     url: '/wa'
   },
   {
@@ -14,7 +14,7 @@ const links = [
     url: '/tt'
   },
   {
-    name: 'Github',
+    name: 'GitHub',
     url: '/gh'
   }
 ]
